@@ -11,6 +11,9 @@ ps-housing (my version)
 ox_doorlock
 qbx_core
 
+NOTE: i placed ps-housing, ps-realtor and fivem-freecam seperate in the main resources section
+https://cdn.discordapp.com/attachments/1224681513510109185/1332818643595165726/image.png?ex=6796a397&is=67955217&hm=e1fc4f3e049a5cccdf91c0138fcc0f68091d49514c1e339e27c702a208d645ee&
+
 
 Step2
 Once youve replaced all of the above you will then open server.cfg and make sure that your order is as follows
