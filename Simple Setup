@@ -33,7 +33,7 @@ Drop both the properties and properties_decorations tables.
 
 
 Step 4
-Insert the following then restart the server
+Insert the following 
 
 CREATE TABLE IF NOT EXISTS `properties` (
     `property_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -55,3 +55,22 @@ CREATE TABLE IF NOT EXISTS `properties` (
     CONSTRAINT `FK_owner_citizenid` FOREIGN KEY (`owner_citizenid`) REFERENCES `players` (`citizenid`) ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT `UQ_owner_apartment` UNIQUE (`owner_citizenid`, `apartment`) -- A character can only own one apartment
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+
+Step 5
+Download fivem-freecam 
+https://github.com/Deltanic/fivem-freecam
+
+Download ps-realtor
+https://github.com/Project-Sloth/ps-realtor
+
+Step 6
+Restart the server 
+
+
+
+ANY issues feel free to reach out 
+https://discord.gg/sHmHrDURFq
+
+Stars on github are appreciated 
+
