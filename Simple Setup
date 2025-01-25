@@ -1,0 +1,57 @@
+--PS-HOUSING for QBX_CORE --
+
+Seen a few people struggling with this so ive made it simple and uploaded all the files already edited so you dont have to
+
+Step1
+Just simply replace ALL the folders 
+
+qbx_spawn
+qbx_properties
+ps-housing (my version)
+ox_doorlock
+qbx_core
+
+
+Step2
+Once youve replaced all of the above you will then open server.cfg and make sure that your order is as follows
+
+ensure ox_lib
+ensure qbx_core
+ensure ox_target
+ensure [ox]
+ensure [qbx]
+ensure ps-realtor
+ensure ps-housing
+ensure fivem-freecam
+ensure [standalone]
+
+
+Step3
+Wnen thats completed open your servers database either through heidi sql or mysql etc
+
+Drop both the properties and properties_decorations tables. 
+
+
+Step 4
+Insert the following then restart the server
+
+CREATE TABLE IF NOT EXISTS `properties` (
+    `property_id` int(11) NOT NULL AUTO_INCREMENT,
+    `owner_citizenid` varchar(50) NULL,
+    `street` VARCHAR(100) NULL,
+    `region` VARCHAR(100) NULL,
+    `description` LONGTEXT NULL,
+    `has_access` JSON NULL DEFAULT (JSON_ARRAY()), -- [citizenid1, citizenid2, ...]
+    `extra_imgs` JSON NULL DEFAULT (JSON_ARRAY()),
+    `furnitures` JSON NULL DEFAULT (JSON_ARRAY()),
+    `for_sale` boolean NOT NULL DEFAULT 1,
+    `price` int(11) NOT NULL DEFAULT 0,
+    `shell` varchar(50) NOT NULL,
+    `apartment` varchar(50) NULL DEFAULT NULL, -- if NULL then it's a house
+    `door_data` JSON NULL DEFAULT NULL, -- {"x": 0.0, "y": 0.0, "z": 0.0, "h": 0.0, "length": 0.0, "width": 0.0}
+    `garage_data` JSON NULL DEFAULT NULL, -- {"x": 0.0, "y": 0.0, "z": 0.0} -- NULL if no garage
+    `zone_data` JSON NULL DEFAULT NULL,
+    PRIMARY KEY (`property_id`),
+    CONSTRAINT `FK_owner_citizenid` FOREIGN KEY (`owner_citizenid`) REFERENCES `players` (`citizenid`) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT `UQ_owner_apartment` UNIQUE (`owner_citizenid`, `apartment`) -- A character can only own one apartment
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
